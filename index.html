@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>8 Months ❤️</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&display=swap');
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background-color: #f3eee6;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           INTRODUCTION
+           ========================= */
+
+        .intro {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background-color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            flex-direction: column;
+
+            z-index: 100;
+
+            opacity: 1;
+
+            transition: opacity 1.5s ease;
+        }
+
+
+        .intro.hidden {
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+
+        .intro-content {
+            text-align: center;
+
+            padding: 30px;
+        }
+
+
+        /* =========================
+           TEXTE INTRO
+           ========================= */
+
+        .intro-text {
+            font-family: 'Dancing Script', cursive;
+
+            font-size: 38px;
+
+            font-weight: 600;
+
+            color: #333;
+
+            margin-bottom: 35px;
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+            transition:
+                opacity 0.5s ease,
+                transform 0.5s ease;
+        }
+
+
+        .intro-text.changing {
+            opacity: 0;
+
+            transform: translateY(-8px);
+        }
+
+
+        /* =========================
+           BOUTON
+           ========================= */
+
+        .read-button {
+            border: none;
+
+            background: linear-gradient(
+                135deg,
+                #e8a7b2,
+                #d98f9b
+            );
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 500;
+
+            padding: 15px 32px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 20px rgba(217, 143, 155, 0.25);
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+            transition:
+                opacity 0.5s ease,
+                transform 0.5s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .read-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 25px rgba(217, 143, 155, 0.35);
+        }
+
+
+        .read-button:active {
+            transform: scale(0.96);
+        }
+
+
+        /* =========================
+           SIGNATURE
+           ========================= */
+
+        .signature {
+            position: fixed;
+
+            bottom: 15px;
+            right: 18px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 11px;
+
+            color: #555;
+
+            opacity: 0.45;
+
+            z-index: 200;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           MUSIQUE
+           ========================= */
+
+        audio {
+            display: none;
+        }
+
+
+        /* =========================
+           PLUIE DE COEURS
+           ========================= */
+
+        .hearts {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: 0;
+        }
+
+
+        .heart {
+            position: absolute;
+
+            top: -60px;
+
+            color: #d98f9b;
+
+            opacity: 0.28;
+
+            font-size: 32px;
+
+            animation: falling linear infinite;
+        }
+
+
+        @keyframes falling {
+
+            0% {
+                transform: translateY(-60px) rotate(0deg);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.28;
+            }
+
+            90% {
+                opacity: 0.28;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(25deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           BULLES
+           ========================= */
+
+        .bubble-container {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+
+            overflow: hidden;
+
+            z-index: 10;
+        }
+
+
+        .bubble {
+            position: absolute;
+
+            padding: 9px 15px;
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, 0.88);
+
+            color: #d98f9b;
+
+            font-family: 'Dancing Script', cursive;
+
+            font-size: 19px;
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.08);
+
+            opacity: 0;
+
+            transform: scale(0.75);
+
+            animation: bubbleAppear 2.5s ease forwards;
+        }
+
+
+        @keyframes bubbleAppear {
+
+            0% {
+                opacity: 0;
+
+                transform: scale(0.75) translateY(8px);
+            }
+
+            18% {
+                opacity: 1;
+
+                transform: scale(1) translateY(0);
+            }
+
+            82% {
+                opacity: 1;
+
+                transform: scale(1) translateY(-3px);
+            }
+
+            100% {
+                opacity: 0;
+
+                transform: scale(0.9) translateY(-12px);
+            }
+        }
+
+
+        /* =========================
+           PAGE BLANCHE
+           ========================= */
+
+        .page {
+            position: relative;
+
+            z-index: 1;
+
+            width: 700px;
+
+            min-height: 900px;
+
+            background-color: white;
+
+            padding: 55px 70px 70px 70px;
+
+            box-shadow:
+                0 5px 25px rgba(0, 0, 0, 0.08);
+
+            opacity: 0;
+
+            transition: opacity 1.5s ease;
+        }
+
+
+        .page.visible {
+            opacity: 1;
+        }
+
+
+        /* =========================
+           TITRE
+           ========================= */
+
+        .title {
+            text-align: center;
+
+            font-family: 'Dancing Script', cursive;
+
+            font-size: 38px;
+
+            font-weight: 600;
+
+            color: #333;
+
+            margin: 0 0 50px 0;
+        }
+
+
+        /* =========================
+           MESSAGE
+           ========================= */
+
+        .message {
+            color: #333;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            text-align: left;
+        }
+
+
+        .message p {
+            margin-bottom: 25px;
+        }
+
+
+        .love {
+            text-align: center;
+
+            font-size: 20px;
+
+            margin-top: 35px;
+        }
+
+
+        /* =========================
+           TELEPHONE
+           ========================= */
+
+        @media (max-width: 750px) {
+
+            body {
+                align-items: flex-start;
+
+                padding: 20px 0;
+            }
+
+
+            .page {
+                width: calc(100% - 30px);
+
+                min-height: auto;
+
+                padding: 40px 25px;
+            }
+
+
+            .intro-text {
+                font-size: 30px;
+            }
+
+
+            .read-button {
+                font-size: 15px;
+
+                padding: 14px 28px;
+            }
+
+
+            .title {
+                font-size: 27px;
+
+                margin-bottom: 40px;
+            }
+
+
+            .message {
+                font-size: 15px;
+
+                line-height: 1.7;
+            }
+
+
+            .heart {
+                font-size: 25px;
+            }
+
+
+            .signature {
+                bottom: 10px;
+
+                right: 12px;
+
+                font-size: 10px;
+            }
+
+
+            .bubble {
+                font-size: 16px;
+
+                padding: 7px 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         SIGNATURE
+         ========================= -->
+
+    <div class="signature">
+        Made by your lovely boyfriend ❤️
+    </div>
+
+
+    <!-- =========================
+         INTRODUCTION
+         ========================= -->
+
+    <div class="intro" id="intro">
+
+        <div class="intro-content">
+
+            <div class="intro-text" id="introText">
+                Do you wanna read ?
+            </div>
+
+
+            <button class="read-button" id="readButton">
+                Read it ❤️
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MUSIQUE
+         ========================= -->
+
+    <audio id="backgroundMusic" loop>
+
+        <source src="musique.mp3" type="audio/mpeg">
+
+    </audio>
+
+
+    <!-- =========================
+         PLUIE DE COEURS
+         ========================= -->
+
+    <div class="hearts">
+
+        <span class="heart" style="left: 3%; animation-duration: 7s; animation-delay: 0s;">♥</span>
+        <span class="heart" style="left: 8%; animation-duration: 9s; animation-delay: 2s;">♥</span>
+        <span class="heart" style="left: 14%; animation-duration: 8s; animation-delay: 4s;">♥</span>
+        <span class="heart" style="left: 20%; animation-duration: 10s; animation-delay: 1s;">♥</span>
+        <span class="heart" style="left: 27%; animation-duration: 7s; animation-delay: 5s;">♥</span>
+        <span class="heart" style="left: 33%; animation-duration: 9s; animation-delay: 3s;">♥</span>
+        <span class="heart" style="left: 39%; animation-duration: 8s; animation-delay: 6s;">♥</span>
+        <span class="heart" style="left: 45%; animation-duration: 10s; animation-delay: 2s;">♥</span>
+        <span class="heart" style="left: 51%; animation-duration: 7s; animation-delay: 7s;">♥</span>
+        <span class="heart" style="left: 57%; animation-duration: 9s; animation-delay: 4s;">♥</span>
+        <span class="heart" style="left: 63%; animation-duration: 8s; animation-delay: 1s;">♥</span>
+        <span class="heart" style="left: 69%; animation-duration: 10s; animation-delay: 5s;">♥</span>
+        <span class="heart" style="left: 75%; animation-duration: 7s; animation-delay: 3s;">♥</span>
+        <span class="heart" style="left: 81%; animation-duration: 9s; animation-delay: 6s;">♥</span>
+        <span class="heart" style="left: 87%; animation-duration: 8s; animation-delay: 2s;">♥</span>
+        <span class="heart" style="left: 93%; animation-duration: 10s; animation-delay: 4s;">♥</span>
+        <span class="heart" style="left: 11%; animation-duration: 8s; animation-delay: 8s;">♥</span>
+        <span class="heart" style="left: 42%; animation-duration: 9s; animation-delay: 9s;">♥</span>
+        <span class="heart" style="left: 72%; animation-duration: 7s; animation-delay: 5s;">♥</span>
+        <span class="heart" style="left: 97%; animation-duration: 8s; animation-delay: 7s;">♥</span>
+
+    </div>
+
+
+    <!-- =========================
+         BULLES
+         ========================= -->
+
+    <div class="bubble-container" id="bubbleContainer"></div>
+
+
+    <!-- =========================
+         PAGE DE LA LETTRE
+         ========================= -->
+
+    <div class="page" id="page">
+
+        <h1 class="title">
+            Happy 8 months Ma Belle ! ❤️
+        </h1>
+
+
+        <div class="message">
+
+            <p>
+                The time goes so fast, I feel like it all started yesterday. I’m having so much fun with you that I don’t feel the time anymore. I’m just enjoying every single day and boom, it’s another month. I don’t know how you feel about it, but for me, it’s really something incredible. I never was that serious with someone, and I never loved someone the way I do with you, really. I’m so happy to be with you, I’m so grateful for everything you said to me, everything you did for me, everything you tried.
+            </p>
+
+
+            <p>
+                These past months have really been something, and it’s just the beginning. Ik the times will be hard sometimes, I know it won’t probably be alright every day, but I won’t flinch, I won’t stop loving you because of this. I want to do things the right way with you, and I mean it. Every problem, I want to solve it with you. Every achievement, I want to celebrate with you. I want you to be a big part of my life. I might be delusional, but that’s what I want, and I would do everything for it.
+            </p>
+
+
+            <p>
+                Thank you for giving me a chance to do good things with you, to show you my love, and thank you, Lola, for going through these 8 months with me. There are still more months left before the 1 year, and I hope the next months will be as good as the past ones. I really love everything about you. Sharing my time with you is like the best thing I’ve ever done. It’s just kinda sad that we can’t see each other often, but I’ll do everything to come often and spend more time with you.
+            </p>
+
+
+            <p>
+                But for the moment, let’s enjoy the fact that it’s been 8 months since we’ve been together. Happy 8 months again, and I hope you have a lotttt of fun with me.
+            </p>
+
+
+            <p class="love">
+                Je t’aime ❤️
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SCRIPT
+         ========================= -->
+
+    <script>
+
+        const intro = document.getElementById("intro");
+
+        const introText = document.getElementById("introText");
+
+        const button = document.getElementById("readButton");
+
+        const page = document.getElementById("page");
+
+        const music = document.getElementById("backgroundMusic");
+
+        const bubbleContainer =
+            document.getElementById("bubbleContainer");
+
+
+        // Volume de la musique : 30%
+        music.volume = 0.30;
+
+
+        let step = 0;
+
+
+        /* =========================
+           TEXTES DES BULLES
+           ========================= */
+
+        const bubbleTexts = [
+            "Lola",
+            "My wife",
+            "Pretty",
+            "Cute",
+            "Adorable",
+            "Amazing",
+            "Abigail",
+            "Temitope",
+            "I love you",
+            "Strong"
+        ];
+
+
+        /*
+         * Crée une bulle sur les côtés
+         * de la lettre uniquement.
+         */
+
+        function createBubble() {
+
+            const bubble =
+                document.createElement("div");
+
+            bubble.classList.add("bubble");
+
+
+            // Texte aléatoire
+            const randomText =
+                bubbleTexts[
+                    Math.floor(
+                        Math.random() * bubbleTexts.length
+                    )
+                ];
+
+            bubble.textContent = randomText;
+
+
+            /*
+             * On place les bulles uniquement
+             * dans les zones situées à gauche
+             * ou à droite de la lettre.
+             */
+
+            const side = Math.random() < 0.5
+                ? "left"
+                : "right";
+
+
+            if (side === "left") {
+
+                // Zone gauche de l'écran
+                bubble.style.left =
+                    (Math.random() * 17 + 1) + "%";
+
+            } else {
+
+                // Zone droite de l'écran
+                bubble.style.left =
+                    (Math.random() * 17 + 82) + "%";
+
+            }
+
+
+            /*
+             * Hauteur aléatoire.
+             */
+
+            bubble.style.top =
+                (Math.random() * 82 + 5) + "%";
+
+
+            /*
+             * Petite variation de taille.
+             */
+
+            const randomScale =
+                0.85 + Math.random() * 0.3;
+
+            bubble.style.fontSize =
+                (19 * randomScale) + "px";
+
+
+            bubbleContainer.appendChild(bubble);
+
+
+            /*
+             * Suppression après l'animation.
+             */
+
+            setTimeout(function() {
+
+                bubble.remove();
+
+            }, 2600);
+
+        }
+
+
+        /* =========================
+           ANIMATION DES BULLES
+           ========================= */
+
+        let bubbleInterval = null;
+
+
+        function startBubbles() {
+
+            if (bubbleInterval !== null) {
+                return;
+            }
+
+
+            // Première bulle immédiatement
+            createBubble();
+
+
+            /*
+             * Une nouvelle bulle toutes les 450 ms.
+             */
+
+            bubbleInterval = setInterval(function() {
+
+                createBubble();
+
+            }, 450);
+
+        }
+
+
+        /* =========================
+           CHANGEMENT DU TEXTE INTRO
+           ========================= */
+
+        function changeText(newText) {
+
+            return new Promise(function(resolve) {
+
+                introText.classList.add("changing");
+
+
+                setTimeout(function() {
+
+                    introText.textContent = newText;
+
+                    introText.classList.remove("changing");
+
+                    resolve();
+
+                }, 500);
+
+            });
+
+        }
+
+
+        /* =========================
+           BOUTON INTRO
+           ========================= */
+
+        button.addEventListener(
+            "click",
+            async function() {
+
+
+                step++;
+
+
+                /*
+                 * PREMIER CLIC
+                 */
+
+                if (step === 1) {
+
+                    await changeText("Are you sure?");
+
+                    button.textContent = "Yes ❤️";
+
+                }
+
+
+                /*
+                 * DEUXIÈME CLIC
+                 */
+
+                else if (step === 2) {
+
+                    await changeText("Really sure???");
+
+                    button.textContent = "Absolutely ❤️";
+
+                }
+
+
+                /*
+                 * TROISIÈME CLIC
+                 */
+
+                else if (step === 3) {
+
+
+                    button.style.opacity = "0";
+
+                    button.style.transform =
+                        "translateY(-5px)";
+
+                    button.style.pointerEvents =
+                        "none";
+
+
+                    await changeText(
+                        "Wow, you really wanna read..."
+                    );
+
+
+                    await new Promise(function(resolve) {
+
+                        setTimeout(resolve, 1600);
+
+                    });
+
+
+                    await changeText(
+                        "I wasn't expecting you to be that excited."
+                    );
+
+
+                    await new Promise(function(resolve) {
+
+                        setTimeout(resolve, 1800);
+
+                    });
+
+
+                    await changeText("Okay then...");
+
+
+                    await new Promise(function(resolve) {
+
+                        setTimeout(resolve, 2500);
+
+                    });
+
+
+                    /*
+                     * Fade de l'introduction.
+                     */
+
+                    intro.classList.add("hidden");
+
+
+                    /*
+                     * Apparition de la lettre.
+                     */
+
+                    page.classList.add("visible");
+
+
+                    /*
+                     * Musique.
+                     */
+
+                    music.play().catch(() => {});
+
+
+                    /*
+                     * Les bulles commencent
+                     * autour de la lettre.
+                     */
+
+                    startBubbles();
+
+                }
+
+            }
+
+        );
+
+    </script>
+
+
+</body>
+</html>
